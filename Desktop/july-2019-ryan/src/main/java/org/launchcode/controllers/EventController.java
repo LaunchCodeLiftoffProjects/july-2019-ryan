@@ -41,7 +41,7 @@ public class EventController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddEventForm(@ModelAttribute @Valid Event newEvent,
-                                      Errors errors, @RequestParam int categoryId, Model model) {
+                                      Errors errors, @RequestParam int venueId, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Event");
             model.addAttribute("venues", venueDao.findAll());
