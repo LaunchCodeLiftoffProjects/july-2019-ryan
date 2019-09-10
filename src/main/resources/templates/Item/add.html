@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+    <form method="post" th:object="${item}">
+
+        <div>
+            <label th:for="name">Name</label>
+            <input th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="description">Description</label>
+            <input th:field="*{description}" />
+            <span th:errors="*{description}" class="error"></span>
+        </div>
+
+        <input type="submit" value="Add Item" />
+
+    </form>
+
+</body>
+</html>

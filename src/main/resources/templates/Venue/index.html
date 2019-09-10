@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+
+</head>
+<body>
+
+    <p th:unless="${venues} and ${venues.size()}">No Venues Yet</p>
+
+    <table class="table">
+
+        <tr>
+
+            <th>Name</th>
+            <th>Description</th>
+
+        </tr>
+
+        <tr th:each="venue : ${venues}">
+            <td th:text="${venue.name}"></td>
+            <td th:text="${venue.description}"></td>
+        </tr>
+
+    </table>
+
+    <a href="/venue/add">Add Venue</a>
+</body>
+</html>

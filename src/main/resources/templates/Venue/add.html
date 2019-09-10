@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+
+</head>
+<body class="container">
+
+    <form method="post" th:object="${venue}">
+
+        <div>
+            <label th:for="name">Name</label>
+            <input th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="description">Description</label>
+            <input th:field="*{description}" />
+            <span th:errors="*{description}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="address">Address</label>
+            <input th:field="*{address}" />
+            <span th:errors="*{address}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="phone">Phone Number</label>
+            <input th:field="*{phone}" />
+            <span th:errors="*{phone}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="parking">How Much Parking</label>
+            <input th:field="*{parking}" />
+            <span th:errors="*{parking}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="seating">Seating type</label>
+            <input th:field="*{seating}" />
+            <span th:errors="*{seating}" class="error"></span>
+        </div>
+
+    </form>
+
+</body>
+</html>
+
