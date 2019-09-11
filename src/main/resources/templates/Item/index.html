@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body>
+
+    <p th:unless="${items} and ${items.size()}">no items added yet</p>
+
+    <table class="table">
+
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+
+        <tr th:each="item : ${items}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.description}"></td>
+        </tr>
+    </table>
+
+    <a href="/item/add">Add Item</a>
+
+</body>
+</html>

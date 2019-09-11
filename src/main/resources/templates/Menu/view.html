@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body class="container">
+
+    <ul>
+        <li th:each="item:${items}" th:text="${item.name}"></li>
+    </ul>
+
+    <p th:unless="${items.size()}">No Food on Menu</p>
+
+    <p><a th:href="'/menu/add-item/' + ${menuId}">Add An Item</a></p>
+</body>
+</html>
