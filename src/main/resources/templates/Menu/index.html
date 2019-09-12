@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
+    <head th:replace="fragments :: head"></head>
     <h1 th:text="${title}">Default Title</h1>
 </head>
 <body class="container">
@@ -10,6 +11,8 @@
             <a th:href="'/menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
         </li>
     </ul>
+
+    <a href="/menu/add">Add Menu</a>
 
 </body>
 </html>

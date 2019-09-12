@@ -47,6 +47,6 @@ public class VenueController {
         }
 
         venueDao.save(venue);
-        return "redirect:";
+        return "redirect:view/" + venue.getId();
     }
 }

@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
+    <head th:replace="fragments :: head"></head>
     <h1 th:text="${title}">Default Title</h1>
 </head>
 <body class="container">
@@ -35,7 +36,7 @@
         <div>
             <label th:for="parking">How Much Parking</label>
             <input th:field="*{parking}" />
-            <span th:errors="*{parking}" class="{error}"></span>
+            <span th:errors="*{parking}" class="error"></span>
         </div>
 
         <div>
@@ -43,9 +44,10 @@
             <input th:field="*{seating}" />
             <span th:errors="*{seating}" class="error"></span>
         </div>
-    </form>
 
-    <input type="submit" value="Add Venue" />
+        <input type="submit" value="Add Venue" />
+
+    </form>
 
 </body>
 </html>

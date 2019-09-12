@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
+    <head th:replace="fragments :: head"></head>
     <h1 th:text="${title}">Default Title</h1>
 </head>
 <body>
@@ -23,7 +24,7 @@
     </tr>
 </table>
 
-<a href="/venue/add">Add Venue</a>
+    <a href="/venue/add">Add Venue</a>
 
 </body>
 </html>
