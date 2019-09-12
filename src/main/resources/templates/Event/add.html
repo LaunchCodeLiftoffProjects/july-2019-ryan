@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title></title>
+</head>
+<body class="container">
+
+    <form method="post" th:object="${event}">
+
+        <div>
+            <label th:for="name">Name</label>
+            <input th:field="*{name}" />
+            <span th:errors="*{name}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="date">Date</label>
+            <input th:field="*{date}" />
+            <span th:errors="*{date}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="price">Price</label>
+            <input th:field="*{price}" />
+            <span th:errors="*{price}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="genre">Genre</label>
+            <input th:field="*{genre}" />
+            <span th:errors="*{genre}" class="error"></span>
+        </div>
+
+        <div>
+            <label th:for="Artist">Artist</label>
+            <input th:field="*{artist}" />
+            <span th:errors="*{artist}" class="{error}"></span>
+        </div>
+    </form>
+
+    <input type="submit" value="Add Event" />
+
+    </body>
+    </html>

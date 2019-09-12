@@ -2,9 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <h1 th:text="${title}">Default Title</h1>
 </head>
-<body>
+<body class="container">
+    <ul>
+        <li th:each="menu : ${menus}">
+            <a th:href="'/menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
+        </li>
+    </ul>
 
 </body>
 </html>

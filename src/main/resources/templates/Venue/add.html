@@ -10,7 +10,7 @@
 
         <div>
             <label th:for="name">Name</label>
-            <input th:field="*{nmae}" />
+            <input th:field="*{name}" />
             <span th:errors="*{name}" class="error"></span>
         </div>
 
@@ -23,7 +23,7 @@
         <div>
             <label th:for="address">Address</label>
             <input th:field="*{address}" />
-            <span th:errors=*{address}" class="error"></span>
+            <span th:errors="*{address}" class="error"></span>
         </div>
 
         <div>
@@ -44,6 +44,8 @@
             <span th:errors="*{seating}" class="error"></span>
         </div>
     </form>
+
+    <input type="submit" value="Add Venue" />
 
 </body>
 </html>

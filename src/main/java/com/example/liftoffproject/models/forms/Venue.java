@@ -18,7 +18,7 @@ public class Venue {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "venue_id")
     private List<Event> events = new ArrayList<>();
 
     public Venue() {}

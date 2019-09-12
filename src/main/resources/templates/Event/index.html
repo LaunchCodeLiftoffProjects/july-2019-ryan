@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <h1 th:text="${title}">Default Title</h1>
+</head>
+<body>
+<p th:unless="${events} and ${events.size()}">No Events Yet</p>
+
+<table class="table">
+
+    <tr>
+
+        <th>Name</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Genre</th>
+        <th>Artist</th>
+
+    </tr>
+
+    <tr th:each="event : ${events}">
+        <td th:text="${event.name}"></td>
+        <td th:text="${event.date"></td>
+        <td th:text="${event.price}"></td>
+        <td th:text="${event.genre}"></td>
+        <td th:text="${event.artist}"></td>
+    </tr>
+</table>
+
+<a href="/event/add">Add Event</a>
+
+</body>
+</html>

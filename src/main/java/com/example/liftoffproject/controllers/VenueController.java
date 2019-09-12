@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("category")
+@RequestMapping("venue")
 public class VenueController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class VenueController {
         model.addAttribute("title", "Add Venue");
         model.addAttribute("venue", new Venue());
 
-        return "/venue/add";
+        return "venue/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
