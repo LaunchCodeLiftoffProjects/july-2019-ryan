@@ -1,10 +1,21 @@
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${genres} and ${genres.size()}">no genres :(</p>
+
+<ul>
+    <li th:each="genre : ${genres}">
+        <a th:href="'/genre?id=' + ${genre.id}" th:text="${genre.name}"></a>
+    </li>
+</ul>
+
+<p><a href="/genre/add">Add Genre</a></p>
+
 </body>
 </html>
