@@ -13,15 +13,9 @@
 
     <table class="table">
 
-            <tr>
-
-                <th>Name</th>
-
-            </tr>
-
-            <tr th:each="menu : ${menus}">
+            <ul th:each="menu : ${menus}">
                 <a th:href="'/menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
-            </tr>
+            </ul>
     </table>
 
     <a href="/menu/add">Add Menu</a>
