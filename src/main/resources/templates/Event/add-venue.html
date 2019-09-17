@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post" th:object="${form}" action="/event/add-venue">
+
+    <div class="form-group">
+        <label th:for="venueId">Venue</label>
+        <select name="venueId">
+            <option th:each="venue : *{venues}"
+                    th:text="${venue.name}"
+                    th:value="${venue.id}"></option>
+        </select>
+
+    </div>
+
+    <input type="hidden" name="eventId" th:value="*{event.id}" />
+
+    <input type="submit" value="Add Venue"/>
+</form>
+
+</body>
+</html>

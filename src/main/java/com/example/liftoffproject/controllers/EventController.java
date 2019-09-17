@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @Controller
@@ -40,26 +39,24 @@ public class EventController {
     public String displayAddEventForm(Model model) {
         model.addAttribute("title", "Add Event");
         model.addAttribute(new Event());
-        model.addAttribute("venues", venueDao.findAll());
         return "event/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddEventForm(@ModelAttribute @Valid Event newEvent,
-                                      Errors errors, @RequestParam int venueId, Model model) {
+    public String processAddEventForm(@ModelAttribute @Valid Event event,
+                                      Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Event");
-            model.addAttribute("venues", venueDao.findAll());
             return "event/add";
         }
 
 
-        eventDao.save(newEvent);
-        return "redirect:view/" + newEvent.getId();
+        eventDao.save(event);
+        return "redirect:view/" + event.getId();
 
     }
 
-    @RequestMapping(value="view/{EventId}", method = RequestMethod.GET)
+    @RequestMapping(value="view/{eventId}", method = RequestMethod.GET)
     public String viewEvent(Model model, @PathVariable int eventId){
 
         Event event = eventDao.findById(eventId).orElse(null);

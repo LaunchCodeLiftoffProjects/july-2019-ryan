@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <head th:replace="fragments :: head"></head>
+    <h1 th:text="${title}">Default Title</h1>
+    <nav th:replace="fragments :: navigation"></nav>
+</head>
+<body class="container">
+
+<ul>
+    <li th:each="venue:${venues}" th:text="${venue.name}"></li>
+</ul>
+
+<p th:unless="${venues.size()}">No Venues</p>
+
+<p><a th:href="'/event/add-venue/' + ${eventId}">Add A Venue</a></p>
+</body>
+</html>

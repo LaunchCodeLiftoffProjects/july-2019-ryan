@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
-<body>
+<head th:replace="fragments :: head"></head>
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+<body class="container">
+
+<ul>
+    <li th:each="menu:${menus}">
+        <a th:href="'/menu/view/' + ${menu.id}" th:text="${menu.name}"></a>
+    </li>
+</ul>
+
+<p th:unless="${menus.size()}">No Menus Found</p>
+
+<p><a th:href="'/venue/add-menu/' + ${venueId}">Add A Menu</a></p>
+
 
 </body>
 </html>

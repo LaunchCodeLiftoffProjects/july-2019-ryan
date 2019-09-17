@@ -20,8 +20,8 @@
     </tr>
 
     <tr th:each="venue : ${venues}">
-        <td th:text="${venue.name}"></td>
-        <td th:text="${venue.description"></td>
+        <td> <a th:href="'/venue/view/' + ${venue.id}" th:text="${venue.name}"></a></td>
+        <td th:text="${venue.description}"></td>
     </tr>
 </table>
 
