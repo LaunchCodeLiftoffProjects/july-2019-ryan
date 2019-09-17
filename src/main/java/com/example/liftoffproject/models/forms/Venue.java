@@ -37,31 +37,26 @@ public class Venue {
     @Size(min=1, message = "seating needs to be filled in")
     private String seating;
 
-    @OneToMany
-    @JoinColumn(name = "venue_id")
-    private List<Event> events = new ArrayList<>();
+    @ManyToMany
+    private List<Menu> menus = new ArrayList<>();
 
     public Venue() {}
 
-    public Venue(String name) {
+    public Venue(String name, String description, String address, String phone, String parking, String seating) {
 
         this.name = name;
+        this.description = description;
+        this.address = address;
+        this.phone = phone;
+        this.parking = parking;
+        this.seating = seating;
     }
 
-    public String getName() {
+    public String getName() { return name; }
 
-        return name;
-    }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-
-        this.name = name;
-    }
-
-    public int getId() {
-
-        return id;
-    }
+    public int getId() { return id; }
 
     public String getDescription() {
         return description;
@@ -103,5 +98,7 @@ public class Venue {
         this.seating = seating;
     }
 
-    public List<Event> getEvents() { return events; }
+    public List<Menu> getMenus() { return menus; }
+
+    public void addMenu(Menu menu) { menus.add(menu); }
 }

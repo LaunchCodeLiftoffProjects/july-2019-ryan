@@ -1,13 +1,12 @@
 package com.example.liftoffproject.models.forms;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -35,8 +34,8 @@ public class Event {
     @Size(min=1, max=50)
     private String artist;
 
-    @ManyToOne
-    private Venue venue;
+    @ManyToMany
+    private List<Venue> venues = new ArrayList<>();
 
     public Event(String name, Date date, BigDecimal price, String genre, String artist) {
         this.name = name;
@@ -71,8 +70,8 @@ public class Event {
 
     public void setPrice(BigDecimal price) { this.price = price; }
 
-    public Venue getVenue() { return venue; }
+    public List<Venue> getVenues() { return venues; }
 
-    public void setVenue(Venue venue) { this.venue = venue; }
+    public void addVenue(Venue venue) { venues.add(venue); }
 }
 

@@ -3,16 +3,14 @@ package com.example.liftoffproject.controllers;
 
 import com.example.liftoffproject.models.data.EventDao;
 import com.example.liftoffproject.models.data.VenueDao;
+import com.example.liftoffproject.models.forms.AddEventVenueForm;
 import com.example.liftoffproject.models.forms.Event;
 import com.example.liftoffproject.models.forms.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
@@ -55,21 +53,50 @@ public class EventController {
             return "event/add";
         }
 
-        Venue ven = venueDao.findById(venueId).orElse(null);;
-        newEvent.setVenue(ven);
+
         eventDao.save(newEvent);
-        return "redirect:";
+        return "redirect:view/" + newEvent.getId();
 
     }
 
-    @RequestMapping(value = "venue", method = RequestMethod.GET)
-    public String venue(Model model, @RequestParam int id) {
+    @RequestMapping(value="view/{EventId}", method = RequestMethod.GET)
+    public String viewEvent(Model model, @PathVariable int eventId){
 
-        Venue ven = venueDao.findById(id).orElse(null);;
-        List<Event> events = ven.getEvents();
-        model.addAttribute("events", events);
-        model.addAttribute("title", "Events in Venue: " + ven.getName());
-        return "event/index";
+        Event event = eventDao.findById(eventId).orElse(null);
+
+        model.addAttribute("title", event.getName());
+        model.addAttribute("venues", event.getVenues());
+        model.addAttribute("eventId", event.getId());
+
+        return "event/view";
+    }
+
+    @RequestMapping(value="add-venue/{eventId}", method = RequestMethod.GET)
+    public String addVenue(Model model, @PathVariable int eventId){
+
+        Event event = eventDao.findById(eventId).orElse(null);
+
+        AddEventVenueForm form = new AddEventVenueForm(venueDao.findAll(), event);
+        model.addAttribute("title", "Add venue to event:");
+        model.addAttribute("form", form);
+
+        return "event/add-venue";
+    }
+
+    @RequestMapping(value="add-venue", method = RequestMethod.POST)
+    public String addVenue(Model model,
+                           @ModelAttribute @Valid AddEventVenueForm form, Errors errors) {
+        if(errors.hasErrors()){
+            model.addAttribute("form");
+            return "event/add-venue";
+        }
+
+        Venue theVenue = venueDao.findById(form.getVenueId()).orElse(null);
+        Event theEvent = eventDao.findById(form.getEventId()).orElse(null);
+        theEvent.addVenue(theVenue);
+        eventDao.save(theEvent);
+
+        return "redirect:/event/view/" + theEvent.getId();
     }
 
 }
