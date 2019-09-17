@@ -37,7 +37,7 @@ public class GenreController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String add(Model model, @ModelAttribute @Valid Genre genre, Errors errors) {
+    public String add(Model model, @ModelAttribute @Valid Genre newGenre, Errors errors) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Genre");
@@ -47,7 +47,8 @@ public class GenreController {
         //Genre cat = GenreDao.findOne(genreId);
         //newGenre.setCategory(cat);
 
-        genreDao.save(genre);
+        genreDao.save(newGenre);
         return "redirect:";
-    }}
+    }
+}
 

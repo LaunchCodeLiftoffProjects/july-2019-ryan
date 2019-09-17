@@ -21,7 +21,7 @@ public class Genre {
     //@JoinColumn(name = "genre_id")
     private List<Genre> events = new ArrayList<>();
 
-    public Genre() {}
+    public Genre(){ }
 
     public Genre(String name) {
         this.name = name;
