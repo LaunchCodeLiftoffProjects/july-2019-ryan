@@ -43,8 +43,8 @@ public class EventController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddEventForm(@ModelAttribute @Valid Event event,
-                                      Errors errors, Model model) {
+    public String processAddEventForm(Model model, @ModelAttribute @Valid Event event,
+                                      Errors errors ) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Event");
             return "event/add";

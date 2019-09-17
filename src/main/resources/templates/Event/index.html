@@ -22,7 +22,7 @@
     </tr>
 
     <tr th:each="event : ${events}">
-        <td th:text="${event.name}"></td>
+        <td> <a th:href="'/event/view/' + ${event.id}" th:text="${event.name}"></a></td>
         <td th:text="${event.date}"></td>
         <td th:text="${event.price}"></td>
         <td th:text="${event.genre}"></td>
