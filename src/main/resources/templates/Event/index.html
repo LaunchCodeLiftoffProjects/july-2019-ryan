@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <head th:replace="fragments :: head"></head>
     <h1 th:text="${title}">Default Title</h1>
+    <nav th:replace="fragments :: navigation"></nav>
 </head>
 <body>
 <p th:unless="${events} and ${events.size()}">No Events Yet</p>
