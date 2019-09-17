@@ -1,6 +1,8 @@
 package com.example.liftoffproject.controllers;
+//package com.example.liftoffproject.models.forms.Genre;
 
 import com.example.liftoffproject.models.data.GenreDao;
+import com.example.liftoffproject.models.forms.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,16 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("Genre")
+@RequestMapping("genre")
 public class GenreController {
 
     @Autowired
-    GenreDao genreDao;
+    private GenreDao genreDao;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model, @RequestParam(defaultValue = "0") int id) {
-        model.addAttribute("title", "Genres");
-        model.addAttribute("Genres", GenreDao.findAll());
+        model.addAttribute("title", "Genre");
+        model.addAttribute("Genres", genreDao.findAll());
         return "genre/index";
     }
 
@@ -42,7 +44,10 @@ public class GenreController {
             return "genre/add";
         }
 
-        GenreDao.save(genre);
+        //Genre cat = GenreDao.findOne(genreId);
+        //newGenre.setCategory(cat);
+
+        genreDao.save(genre);
         return "redirect:";
     }}
 

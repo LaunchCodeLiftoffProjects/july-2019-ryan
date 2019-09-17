@@ -1,3 +1,5 @@
+package com.example.liftoffproject.models.forms;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,9 +17,9 @@ public class Genre {
     @Size(min=3, max=15)
     private String name;
 
-    @ManyToMany
-    @JoinColumn(name = "genre_id")
-    private List<Genre> genres = new ArrayList<>();
+    //@ManyToMany
+    //@JoinColumn(name = "genre_id")
+    private List<Genre> events = new ArrayList<>();
 
     public Genre() {}
 
