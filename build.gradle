@@ -21,6 +21,7 @@ repositories {
 }
 
 dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.8.RELEASE'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
@@ -29,4 +30,5 @@ dependencies {
 	compile('mysql:mysql-connector-java')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
 }
