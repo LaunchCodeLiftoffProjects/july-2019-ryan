@@ -22,17 +22,17 @@ public class GenreController {
     @Autowired
     private GenreDao genreDao;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public String index(Model model, @RequestParam(defaultValue = "0") int id) {
+    @RequestMapping(value = "")
+    public String index(Model model, @RequestParam(defaultValue = "0") int id)  {
         model.addAttribute("title", "Genre");
-        model.addAttribute("Genres", genreDao.findAll());
+        model.addAttribute("genres", genreDao.findAll());
         return "genre/index";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute(new Genre());
-        model.addAttribute("title", "Add Genre");
+        model.addAttribute("name", "Add Genre");
         return "genre/add";
     }
 
@@ -40,7 +40,7 @@ public class GenreController {
     public String add(Model model, @ModelAttribute @Valid Genre newGenre, Errors errors) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Genre");
+            model.addAttribute("name", "Add Genre");
             return "genre/add";
         }
 

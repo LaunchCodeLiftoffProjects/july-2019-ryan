@@ -9,7 +9,7 @@
 <form method="post" style="max-width:600px;" th:object="${genre}">
     <div class="form-group">
         <label th:for="name">Genre</label>
-        <input class="form-control" th:field="*{genre}" />
+        <input class="form-control" th:field="*{name}" />
         <span th:errors="*{name}" class="error"></span>
     </div>
 
