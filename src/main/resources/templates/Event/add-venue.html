@@ -18,6 +18,8 @@
 
     </div>
 
+    <p><a th:href="'/venue/add-venue/' + ${venueId}">Add A Venue</a></p>
+
     <input type="hidden" name="eventId" th:value="*{event.id}" />
 
     <input type="submit" value="Add Venue"/>
